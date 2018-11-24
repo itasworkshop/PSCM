@@ -5,14 +5,50 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+<jsp:include page="../fragments/index.jsp" />
+</head>
 
-<jsp:include page="../fragments/header.jsp" />
 
 <body>
 
-	<div class="container">
+	<div id="wrapper">
 
-		<c:if test="${not empty msg}">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">&nbsp;</li>
+                <li><a href="https://www.google.com">Dashboard</a>
+                </li>
+                <li><a href="#">Shortcuts</a>
+                </li>
+                <li><a href="#">Overview</a>
+                </li>
+                <li><a href="#">Events</a>
+                </li>
+                <li><a href="#">About</a>
+                </li>
+                <li><a href="#">Services</a>
+                </li>
+                <li><a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+<br></br>
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+            <div class="content-header">            
+                <h1>
+                    <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
+                    <span></span>
+                    All Resource's Schedules
+                </h1>
+            </div>
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+                <div class="row">
+                    <div class="col-md-12">
+                        <c:if test="${not empty msg}">
 			<div class="alert alert-${css} alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -21,12 +57,10 @@
 			</div>
 		</c:if>
 
-		<h1>All Resource's Schedules</h1>
-
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#shID</th>
+					<th>ScheduleID</th>
 					<th>Resource Type</th>
 					<th>Resource Name</th>
 					<th>Activity</th>
@@ -59,10 +93,19 @@
 				</tr>
 			</c:forEach>
 		</table>
-
-	</div>
-
-	<jsp:include page="../fragments/footer.jsp" />
+					</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+	<!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });
+    </script>
 
 </body>
 </html>
